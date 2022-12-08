@@ -1,6 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 function App() {
+  const [task, setTask] = uTeState(null)
+
+  const addTask = () => {
+    e.preventDefault()
+    if(isEmpty(task)) {
+      console.log("Task emty")
+      return
+    }
+
+    console.log("Ok")
+    setTask(null)
+  }
+  
   return (
     <div className="container mt-5">
       <h1>Tareas </h1>
@@ -18,11 +31,13 @@ function App() {
         </div>
         <div className="col-4">
           <h4 className="texs-center">Formulario</h4>
-          <form>
+          <form onSubmit={addTask}>
             <input
              type="text"
              className="from-control mb-2"
-             placeholder="Ingrese la tarea . . ."
+             placeholder="Ingrese la tarea..."
+             onChange={(text) => setTask(text.target.value)}
+             value={task}
             />
             <button 
             className="btn btn-dark btn-block"
